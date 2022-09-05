@@ -6,7 +6,7 @@
 	"types": "./lib/index.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"test": "vitest",
+		"test": "vitest --watch=false",
 		"coverage": "vitest run --coverage"
 	},
 	"keywords": [
@@ -17,7 +17,7 @@
 	],
 	"repository": {
 		"type": "Github",
-		"url": "https://github.com/LukasMurdock/simple-query-params"
+		"url": "https://github.com/LukasMurdock/simple-params"
 	},
 	"author": "Lukas Murdock",
 	"license": "ISC",
