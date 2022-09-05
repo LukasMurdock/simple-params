@@ -1,8 +1,8 @@
 # Simple Params
 
-Simple, tiny, and typed params.
+Simple, tiny, and typed parameter parser.
 
-Adapt `URLSearchParams` to Prisma Client Query, Firestore Query, etc., with ease.
+Built to configure a parser for `URLSearchParams` and adapt to Prisma Client Query, Firestore Query, etc., with ease.
 
 [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) → [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) → API Config → Simple Query Object
 
@@ -15,9 +15,9 @@ npm install simple-params
 ## Usage
 
 ```typescript
-import { parseNumber, simpleQueryParams } from 'simple-params';
+import { parseNumber, simpleParams } from 'simple-params';
 
-const api = simpleQueryParams({
+const api = simpleParams({
 	size: (val) => 'I will always be this value',
 	string: (val) => (val ? 'true' : 'false'),
 	boolean: (val) => (val ? true : false),
@@ -27,4 +27,4 @@ const api = simpleQueryParams({
 const params = api.parse(urlSearchParams);
 ```
 
-Simply provide the `simpleQueryParams` function with query parameter keys and validator functions.
+Simply provide the `simpleParams` function with query parameter keys and validator functions.

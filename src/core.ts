@@ -1,8 +1,6 @@
 type Config = Record<string, (val: string | null) => string | number | unknown>;
 
-export function simpleQueryParams<T extends Config, K extends keyof T>(
-	config: T
-) {
+export function simpleParams<T extends Config, K extends keyof T>(config: T) {
 	return {
 		parse(params: URLSearchParams) {
 			return Object.entries(config).reduce((acc, [key, parseFunction]) => {
