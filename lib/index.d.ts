@@ -1,4 +1,4 @@
-export * as core from './core';
-export * as simpleListQuery from './simpleListQuery';
-export * as parsers from './parsers';
-export * as types from './types';
+export * from './core';
+export * from './simpleListQuery';
+export * from './parsers';
+export * from './types';
