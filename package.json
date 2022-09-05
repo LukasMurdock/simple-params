@@ -1,0 +1,16 @@
+{
+	"name": "simple-query-params",
+	"version": "0.0.1",
+	"description": "It's in the url",
+	"main": "./lib/main.js",
+	"types": "./lib/main.d.ts",
+	"scripts": {
+		"build": "tsc"
+	},
+	"author": "Lukas Murdock",
+	"license": "ISC",
+	"devDependencies": {
+		"typescript": "^4.8.2",
+		"@types/node": "18.7.14"
+	}
+}
