@@ -112,7 +112,7 @@ export function parseListQuery<T extends KeyVal>(
 		// fields: (val) => parseFieldMasks<T>(val, config),
 	});
 
-	return api.parseURLSearchParams(searchParams);
+	return api.parse(searchParams);
 }
 
 // TODO: allow field traversal with wildcard '*'
