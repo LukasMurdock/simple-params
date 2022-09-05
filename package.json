@@ -1,6 +1,6 @@
 {
-	"name": "simple-query-params",
-	"version": "0.0.1",
+	"name": "simple-params",
+	"version": "0.0.0",
 	"description": "It's in the url",
 	"main": "./lib/main.js",
 	"types": "./lib/main.d.ts",
