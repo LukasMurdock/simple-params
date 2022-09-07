@@ -20,6 +20,7 @@
 		"url": "https://github.com/LukasMurdock/simple-params"
 	},
 	"author": "Lukas Murdock",
+	"homepage": "https://github.com/LukasMurdock/simple-params#readme",
 	"license": "ISC",
 	"devDependencies": {
 		"@types/node": "18.7.14",

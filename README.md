@@ -27,4 +27,4 @@ const api = simpleParams({
 const params = api.parse(urlSearchParams);
 ```
 
-Simply provide the `simpleParams` function with query parameter keys and validator functions.
+Simply provide the `simpleParams` function with parameter keys and validator functions.
