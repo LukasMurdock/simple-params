@@ -19,3 +19,26 @@ export function parseNumber(
 		? max
 		: parse;
 }
+
+export function parseDate(
+	string: any,
+	{
+		fallback,
+		min,
+		max,
+	}: {
+		/** The default value to use. */
+		fallback: Date;
+		min?: Date;
+		max?: Date;
+	}
+) {
+	const date = new Date(string);
+	return date.toString() === 'Invalid Date'
+		? fallback
+		: min && date < min
+		? min
+		: max && date > max
+		? max
+		: date;
+}
