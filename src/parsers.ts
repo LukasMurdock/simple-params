@@ -24,11 +24,9 @@ export function parseDate(
 	string: any,
 	{ fallback, min, max }: ParseOptions<Date>
 ) {
-	console.log({ string });
 	const yyyymmddLength = 10;
 	if (string === null || string.length < yyyymmddLength) return fallback;
 	const date = new Date(string);
-	// console.log({ date });
 	return date.toString() === 'Invalid Date'
 		? fallback
 		: min && date < min
