@@ -4,6 +4,9 @@
 	"description": "It's in the url",
 	"main": "./lib/index.js",
 	"types": "./lib/index.d.ts",
+	"files": [
+		"lib/"
+	],
 	"scripts": {
 		"build": "tsc",
 		"test": "vitest --watch=false",
