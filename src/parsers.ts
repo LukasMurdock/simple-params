@@ -1,13 +1,13 @@
-type ParseNumberOptions = {
+type ParseOptions<T> = {
 	/** The default value to use. */
-	fallback: number;
-	min?: number;
-	max?: number;
+	fallback: T;
+	min?: T;
+	max?: T;
 };
 
 export function parseNumber(
 	string: any,
-	{ fallback, min, max }: ParseNumberOptions
+	{ fallback, min, max }: ParseOptions<number>
 ) {
 	if (string === null) return fallback;
 	const parse = Number(string);
@@ -22,18 +22,13 @@ export function parseNumber(
 
 export function parseDate(
 	string: any,
-	{
-		fallback,
-		min,
-		max,
-	}: {
-		/** The default value to use. */
-		fallback: Date;
-		min?: Date;
-		max?: Date;
-	}
+	{ fallback, min, max }: ParseOptions<Date>
 ) {
+	console.log({ string });
+	const yyyymmddLength = 10;
+	if (string === null || string.length < yyyymmddLength) return fallback;
 	const date = new Date(string);
+	// console.log({ date });
 	return date.toString() === 'Invalid Date'
 		? fallback
 		: min && date < min
