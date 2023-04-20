@@ -12,9 +12,25 @@ const api = simpleParams({
 
 const params = api.parse(url.searchParams);
 
-test('Parser Functions', () => {
+test('URLSearchParams Parser Functions', () => {
 	expect(params.size).toBe('I will always be this value');
 	expect(params.string).toBe('false');
 	expect(params.boolean).toBe(false);
 	expect(params.page_size).toBe(1);
+});
+
+const paramsObject = {
+	size: 'I will always be this value',
+	string: 'true',
+	boolean: 'true',
+	page_size: '10',
+};
+
+const params2 = api.parse(paramsObject);
+
+test('Object Parser Functions', () => {
+	expect(params2.size).toBe('I will always be this value');
+	expect(params2.string).toBe('true');
+	expect(params2.boolean).toBe(true);
+	expect(params2.page_size).toBe(10);
 });
