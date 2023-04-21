@@ -1,21 +1,37 @@
 type Config = Record<string, (val: string | null) => string | number | unknown>;
+type ArrayConfig = Record<string, (val: string[]) => string | number | unknown>;
 
-export function simpleParams<T extends Config, K extends keyof T>(config: T) {
+export function simpleParams<
+	GetConfig extends Config,
+	GetAllConfig extends ArrayConfig,
+	GetConfigKey extends keyof GetConfig,
+	GetAllConfigKey extends keyof GetAllConfig
+>(getConfig: GetConfig, getAllConfig?: GetAllConfig) {
 	return {
-		parse(params: URLSearchParams | Record<string, string>) {
-			if (params instanceof URLSearchParams) {
-				return Object.entries(config).reduce((acc, [key, parseFunction]) => {
-					acc[key as keyof T] = parseFunction(params.get(key)) as ReturnType<
-						T[K]
-					>;
+		parse(params: URLSearchParams) {
+			const getParams = Object.entries(getConfig).reduce(
+				(acc, [key, parseFunction]) => {
+					acc[key as GetConfigKey] = parseFunction(
+						params.get(key)
+					) as ReturnType<GetConfig[GetConfigKey]>;
 					return acc;
-				}, {} as { [K in keyof T]: ReturnType<T[K]> });
-			} else {
-				return Object.entries(config).reduce((acc, [key, parseFunction]) => {
-					acc[key as keyof T] = parseFunction(params[key]) as ReturnType<T[K]>;
-					return acc;
-				}, {} as { [K in keyof T]: ReturnType<T[K]> });
-			}
+				},
+				{} as { [K in GetConfigKey]: ReturnType<GetConfig[K]> }
+			);
+
+			const getAllParams = getAllConfig
+				? Object.entries(getAllConfig).reduce((acc, [key, parseFunction]) => {
+						acc[key as GetAllConfigKey] = parseFunction(
+							params.getAll(key)
+						) as ReturnType<GetAllConfig[GetAllConfigKey]>;
+						return acc;
+				  }, {} as { [K in GetAllConfigKey]: ReturnType<GetAllConfig[K]> })
+				: ({} as { [K in GetAllConfigKey]: ReturnType<GetAllConfig[K]> });
+
+			return {
+				...getParams,
+				...getAllParams,
+			};
 		},
 	};
 }
