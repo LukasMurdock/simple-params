@@ -1,9 +1,9 @@
-declare type ParseOptions<T> = {
+declare type ParseOptions<TFallback, TMain> = {
     /** The default value to use. */
-    fallback: T;
-    min?: T;
-    max?: T;
+    fallback: TFallback;
+    min?: TMain;
+    max?: TMain;
 };
-export declare function parseNumber(string: any, { fallback, min, max }: ParseOptions<number>): number;
-export declare function parseDate(string: any, { fallback, min, max }: ParseOptions<Date>): Date;
+export declare function parseNumber<TFallback>(string: any, { fallback, min, max }: ParseOptions<TFallback, number>): number | TFallback;
+export declare function parseDate<TFallback>(string: any, { fallback, min, max }: ParseOptions<TFallback, Date>): TFallback | Date;
 export {};
