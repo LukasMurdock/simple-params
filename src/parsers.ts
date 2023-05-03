@@ -25,7 +25,7 @@ export function parseDate<TFallback>(
 	{ fallback, min, max }: ParseOptions<TFallback, Date>
 ) {
 	const yyyymmddLength = 10;
-	if (string === null || string.length < yyyymmddLength) return fallback;
+	if (!string || string.length < yyyymmddLength) return fallback;
 	const date = new Date(string);
 	return isNaN(date.getTime())
 		? fallback

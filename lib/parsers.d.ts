@@ -1,4 +1,4 @@
-declare type ParseOptions<TFallback, TMain> = {
+type ParseOptions<TFallback, TMain> = {
     /** The default value to use. */
     fallback: TFallback;
     min?: TMain;
